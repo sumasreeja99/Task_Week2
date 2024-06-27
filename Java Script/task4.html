@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date and Time</title>
+    <script>
+        function showDate() {
+            const date = new Date();
+            const day = date.getDate();
+            const month = date.toLocaleString('default', { month: 'long' });
+            const year = date.getFullYear();
+            document.getElementById('dateDisplay').innerText = `${day} ${month} ${year}`;
+        }
+
+        function showTime() {
+            const date = new Date();
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            const seconds = date.getSeconds().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('timeDisplay').innerText = timeString;
+        }
+    </script>
+    <style>
+        button {
+            padding: 3px;
+            height: 40px;
+            width: 200px;
+            font-size: large;
+        }
+        .text {
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showDate()">Show Date</button>
+    <div id="dateDisplay" class="text"></div>
+
+    <br><br>
+    
+    <button onclick="showTime()">Show Time</button>
+    <div id="timeDisplay" class="text"></div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Javascript task 5</title>
+<style>
+.error {
+  color: red;
+  font-size: 12px;
+}
+label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+input, textarea {
+  width: 200px;
+  border: 1px solid #ccc;
+}
+input.invalid, textarea.invalid {
+  border: 1px solid red;
+}
+</style>
+<script>
+function validateForm() {
+  let name = document.forms["myForm"]["name"].value;
+  let email = document.forms["myForm"]["email"].value;
+  let website = document.forms["myForm"]["website"].value;
+  let message = document.forms["myForm"]["message"].value;
+  let valid = true;
+  
+  // Name validation
+  let nameError = document.getElementById("nameError");
+  let nameInput = document.getElementById("name");
+  if (name == "") {
+    nameError.innerHTML = "This field is required";
+    nameInput.classList.add("invalid");
+    valid = false;
+  } else {
+    nameError.innerHTML = "";
+    nameInput.classList.remove("invalid");
+  }
+  
+  // Email validation
+  let emailError = document.getElementById("emailError");
+  let emailInput = document.getElementById("email");
+  if (email == "") {
+    emailError.innerHTML = "A valid email address is required";
+    emailInput.classList.add("invalid");
+    valid = false;
+  } else {
+    emailError.innerHTML = "";
+    emailInput.classList.remove("invalid");
+  }
+  
+  // Website validation
+  let websiteError = document.getElementById("websiteError");
+  let websiteInput = document.getElementById("website");
+  if (website == "") {
+    websiteError.innerHTML = "A valid url is required";
+    websiteInput.classList.add("invalid");
+    valid = false;
+  } else {
+    websiteError.innerHTML = "";
+    websiteInput.classList.remove("invalid");
+  }
+  
+  // Message validation
+  let messageError = document.getElementById("messageError");
+  let messageInput = document.getElementById("message");
+  if (message == "") {
+    messageError.innerHTML = "This field is required";
+    messageInput.classList.add("invalid");
+    valid = false;
+  } else {
+    messageError.innerHTML = "";
+    messageInput.classList.remove("invalid");
+  }
+  
+  return valid;
+}
+</script>
+</head>
+<body>
+
+<form name="myForm" onsubmit="return validateForm()" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name">
+  <span id="nameError" class="error"></span><br><br>
+  
+  <label for="email">Email:</label>
+  <input type="text" name="email" id="email">
+  <span id="emailError" class="error"></span><br><br>
+  
+  <label for="website">Website:</label>
+  <input type="text" name="website" id="website">
+  <span id="websiteError" class="error"></span><br><br>
+  
+  <label for="message">Message:</label>
+  <textarea name="message" id="message" rows="5" cols="40"></textarea>
+  <span id="messageError" class="error"></span><br><br>
+  
+  <button type="submit" value="Submit" style="margin-left: 115px;">Submit</button>
+</form>
+
+</body>
+</html>
